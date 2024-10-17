@@ -31,4 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# API nycklar och hemligheter
+application.properties
+application.yml
 .env
