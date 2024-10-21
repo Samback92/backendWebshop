@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import com.backendWebshop.backendWebshop.model.Product;
 import com.backendWebshop.backendWebshop.repository.ProductRepository;
-import com.backendWebshop.backendWebshop.service.ProductService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
+
+    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
     private final ProductRepository productRepository;
@@ -25,11 +30,13 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getAllProducts() {
+        log.info("Fetching all products");
         return productRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable String id) {
+        log.info("Fetching product with id {}", id);
         Optional<Product> product = productRepository.findById(id);
         return product.map(ResponseEntity::ok)
                       .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
