@@ -1,13 +1,13 @@
-package com.frontendWebshop.frontendWebshop;
+package com.backendWebshop.backendWebshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrontendWebshopApplication {
+public class BackendWebshopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FrontendWebshopApplication.class, args);
+		SpringApplication.run(BackendWebshopApplication.class, args);
 	}
 
 }

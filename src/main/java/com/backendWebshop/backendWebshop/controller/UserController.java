@@ -1,26 +1,26 @@
-package com.frontendWebshop.frontendWebshop.controller;
+package com.backendWebshop.backendWebshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import com.frontendWebshop.frontendWebshop.exception.ResourceNotFoundException;
-import com.frontendWebshop.frontendWebshop.model.User;
-import com.frontendWebshop.frontendWebshop.model.UserDto;
-import com.frontendWebshop.frontendWebshop.repository.UserRepository;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.backendWebshop.backendWebshop.exception.ResourceNotFoundException;
+import com.backendWebshop.backendWebshop.model.User;
+import com.backendWebshop.backendWebshop.model.UserDto;
+import com.backendWebshop.backendWebshop.repository.UserRepository;
 
 @RestController
-@RequestMapping(value = "/api/users")
+@RequestMapping("/api/users")
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -28,6 +28,15 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
+    @GetMapping("/current")
+    public ResponseEntity<UserDto> getCurrentUser(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        UserDto userDto = (UserDto) authentication.getPrincipal();
+        return ResponseEntity.ok(userDto);
+    }
 
     @PostMapping("/register")
     public String registerUser(@RequestBody UserDto userDto, RedirectAttributes r) {
@@ -75,5 +84,4 @@ public class UserController {
                     .map(u -> new UserDto(u))
                     .collect(Collectors.toList());
     }
-
 }

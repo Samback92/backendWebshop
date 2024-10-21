@@ -1,9 +1,10 @@
-package com.frontendWebshop.frontendWebshop.repository;
+package com.backendWebshop.backendWebshop.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import com.frontendWebshop.frontendWebshop.model.User;
+
+import com.backendWebshop.backendWebshop.model.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 

@@ -1,14 +1,13 @@
-package com.frontendWebshop.frontendWebshop.service;
+package com.backendWebshop.backendWebshop.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.frontendWebshop.frontendWebshop.model.User;
-import com.frontendWebshop.frontendWebshop.model.UserDto;
-
-import com.frontendWebshop.frontendWebshop.repository.UserRepository;
+import com.backendWebshop.backendWebshop.model.User;
+import com.backendWebshop.backendWebshop.model.UserDto;
+import com.backendWebshop.backendWebshop.repository.UserRepository;
 
 @Service
 public class MongoUserDetailsService implements UserDetailsService {

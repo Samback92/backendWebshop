@@ -1,4 +1,4 @@
-package com.frontendWebshop.frontendWebshop.model;
+package com.backendWebshop.backendWebshop.model;
 
 import java.util.Collection;
 

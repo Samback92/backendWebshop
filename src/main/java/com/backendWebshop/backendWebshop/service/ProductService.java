@@ -1,14 +1,12 @@
-package com.frontendWebshop.frontendWebshop.service;
+package com.backendWebshop.backendWebshop.service;
 
 import org.bson.types.ObjectId;
 
 import org.springframework.stereotype.Service;
 
-import com.frontendWebshop.frontendWebshop.model.Product;
-
-import com.frontendWebshop.frontendWebshop.exception.ResourceNotFoundException;
-
-import com.frontendWebshop.frontendWebshop.repository.ProductRepository;
+import com.backendWebshop.backendWebshop.exception.ResourceNotFoundException;
+import com.backendWebshop.backendWebshop.model.Product;
+import com.backendWebshop.backendWebshop.repository.ProductRepository;
 
 import java.util.List;
 

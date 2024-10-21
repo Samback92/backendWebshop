@@ -1,4 +1,4 @@
-package com.frontendWebshop.frontendWebshop.exception;
+package com.backendWebshop.backendWebshop.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
