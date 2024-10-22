@@ -17,15 +17,8 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/stripe")
 public class StripeController {
 
-    @Value("${Stripe.apiKey}")
-    private String stripeApiKey;
-
     private static final Logger log = LoggerFactory.getLogger(StripeController.class);
 
-    @PostConstruct
-    public void init() {
-        Stripe.apiKey = stripeApiKey;
-    }
 
     @PostMapping("/create-payment-intent")
     public ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody Map<String, Object> request) {
