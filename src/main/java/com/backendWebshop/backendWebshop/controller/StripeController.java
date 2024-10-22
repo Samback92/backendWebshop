@@ -30,6 +30,7 @@ public class StripeController {
     @PostMapping("/create-payment-intent")
     public ResponseEntity<Map<String, String>> createPaymentIntent(@RequestBody Map<String, Object> request) {
         try {
+            log.info("Received payment intent request: {}", request);
             double amountInDollars = Double.parseDouble(request.get("amount").toString());
             long amountInCents = (long) (amountInDollars * 100);
 
