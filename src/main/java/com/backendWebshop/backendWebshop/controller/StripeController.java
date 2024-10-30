@@ -1,13 +1,10 @@
 package com.backendWebshop.backendWebshop.controller;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.stripe.Stripe;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
-import jakarta.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
