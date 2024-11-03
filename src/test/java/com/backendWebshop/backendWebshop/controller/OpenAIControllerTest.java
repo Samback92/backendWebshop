@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -28,6 +29,7 @@ import com.backendWebshop.backendWebshop.service.OpenAIService;
 
 @WebMvcTest(OpenAIController.class) // Anger att detta är en testklass för WebMVC, fokuserad på OpenAIController. 
 @ExtendWith(MockitoExtension.class) // Utökar JUnit5 med Mockito-funktioner. 
+@TestPropertySource(locations = "classpath:application-test.properties")
 public class OpenAIControllerTest { 
     
     @Autowired 
@@ -76,5 +78,5 @@ public class OpenAIControllerTest {
             .contentType(MediaType.APPLICATION_JSON) 
             .content("{\"query\":\"test query\"}")) 
             .andExpect(status().isInternalServerError()); 
-        }
+    }
 }

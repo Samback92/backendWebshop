@@ -22,7 +22,7 @@ public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @Autowired
-    private final ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;

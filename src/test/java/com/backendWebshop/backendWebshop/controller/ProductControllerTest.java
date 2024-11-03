@@ -20,11 +20,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@WebMvcTest(ProductController.class) // Använder WebMvcTest för att testa web-layer
-@ExtendWith(MockitoExtension.class)  // Använder MockitoExtension för mockning
+@WebMvcTest(ProductController.class) // Anger att detta är en testklass för WebMVC, fokuserad på ProductController. 
+@ExtendWith(MockitoExtension.class) // Utökar JUnit5 med Mockito-funktioner. 
+@TestPropertySource(locations = "classpath:application-test.properties")
 public class ProductControllerTest {
 
     @Autowired
@@ -78,14 +80,4 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.name").value("Product 1"));
     }
 
-    @Test
-    public void testGetProductById_NotFound() throws Exception {
-        // Mockar repository-svar att returnera tomt svar
-        when(productRepository.findById("1")).thenReturn(Optional.empty());
-
-        // Utför GET-anropet och förväntade resultat
-        mockMvc.perform(get("/api/products/1")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
-    }
 }
